@@ -28,6 +28,7 @@ a:hover {
 }
 
 .form-body {
+  font-family: 'Cairo', sans-serif;
   background-color: #4a304d;
   overflow: hidden;
   padding: 50px;
@@ -465,10 +466,4 @@ li.fb a::before {
   align-items: center;
   justify-content: center;
   margin-left: 5px; /* Adjust the margin as needed */
-}
-
-media (min-width: 768px)
-.col-md-12 {
-    flex: 0 0 100%;
-    max-width: 100%;
 }

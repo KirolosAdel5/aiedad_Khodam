@@ -9,12 +9,12 @@
 }
 
 body {
-    font-family: mulish,sans-serif;
     padding: 0;
     margin: 0;
     font-size: 14px;
     position: relative;
-    background: #fbf6f0
+    background: #fbf6f0;
+    font-family: 'Cairo', sans-serif;
 }
 
 @media(min-width: 1200px) {
@@ -5318,7 +5318,6 @@ body::-webkit-scrollbar {
     padding-bottom: 0;
     padding-top: 6px;
     background: #fbf6f0;
-    padding-left: 270px;
     position: absolute;
     left: 0;
     right: 0;
@@ -8144,7 +8143,7 @@ canvas#highlights {
 
 .social_media_card .media_card_body .media_card_list .single_media_card span {
     color: #ffc881;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700
 }
 
