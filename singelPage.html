@@ -43,7 +43,7 @@
 	<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
 	<div class="page_title_left">
 	<div class="row mt-4">
-	<h3 class="f_s_25 f_w_700 dark_text" style="font-family: cairo;">اهلا بيك يا كيرو  👋</h3>
+		<h3 class="f_s_25 f_w_700 dark_text" style="font-family: cairo;">اهلا بيك يا <span id="namePlaceholder"></span> 👋</h3>
 	
 	</div>
 </div>
@@ -79,19 +79,19 @@
 	<div class="sales_card_body">
 	<div class="single_sales">
 	<span>الامتحان الاول</span>
-	<h3>34</h3>
+	<h3 id="grade1Placeholder"></h3>
 	</div>
 	<div class="single_sales">
 	<span>المتحان الثاني</span>
-	<h3>40</h3>
+	<h3 id="grade2Placeholder"></h3>
 	</div>
 	<div class="single_sales">
 	<span>الامتحان الثالث</span>
-	<h3>39</h3>
+	<h3 id="grade3Placeholder"></h3>
 	</div>
 	<div class="single_sales">
 	<span>الامتحان الرابع</span>
-	<h3>45</h3>
+	<h3 id="grade4Placeholder"></h3>
 	</div>
 	
 	</div>
@@ -101,7 +101,11 @@
 	<div class="white_card card_height_100 mb_30 social_media_card">
 	<div class="white_card_header">
 	<div class="main-title">
-	<h3 class="m-0" style="font-family: cairo;">الحضور و الغياب</h3>
+		<h3 class="m-0" style="font-family: cairo;">
+			الحضور و الغياب
+			<span class="iconify" data-icon="mdi:checkbox-marked" style="width: 24px; height:24px;"></span>
+		</h3>
+
 	<span>مرات الحضور والغياب للأجتماع</span>
 	</div>
 	</div>
@@ -115,7 +119,7 @@
 				
 			<span class="iconify" data-icon="mdi:sun-clock" style="width: 24px; height: 24px;"></span>
 			</div> قبل  5:15</span>
-			<h3>10</h3>
+			<h3 id="p"></h3>
 		</div>
 		  
 	<div class="single_media_card">
@@ -124,32 +128,32 @@
 	<span class="iconify" data-icon="mdi:cloud-clock" style="width: 24px; height: 24px;"></span>
 	</div> 
 	قبل  5:30</span>
-	<h3>5</h3>
+	<h3 id="l"></h3>
 	</div>
 
 	<div class="single_media_card">
 		<span> 
 			<div>
-			<span class="iconify" data-icon="mdi:cloud-clock" style="width: 24px; height: 24px;"></span>
+			<span class="iconify" data-icon="mdi:bell-sleep" style="width: 24px; height: 24px;"></span>
 			</div> 
 			قبل  5:45</span>
-	<h3>2</h3>
+	<h3 id="vl"></h3>
 	</div>
 	<div class="single_media_card">
 		<span> 
 			<div>
-			<span class="iconify" data-icon="mdi:cloud-clock" style="width: 24px; height: 24px;"></span>
+			<span class="iconify" data-icon="mdi:stop-remove" style="width: 24px; height: 24px;"></span>
 			</div> 
 			غائب بدون عذر</span>
-	<h3>2</h3>
+	<h3 id="u"></h3>
 	</div>
 	<div class="single_media_card" style="grid-column: span 2">
 		<span> 
 			<div>
-			<span class="iconify" data-icon="mdi:cloud-clock" style="width: 24px; height: 24px;"></span>
+			<span class="iconify" data-icon="mdi:hands-pray" style="width: 24px; height: 24px;"></span>
 			</div> 
 			غائب بعذر</span>
-		<h3>2</h3>
+		<h3 id="e"></h3>
 		</div>
 	</div>
 	</div>
@@ -162,7 +166,9 @@
 	<div class="white_card_header">
 	<div class="box_header m-0">
 	<div class="main-title">
-	<h3 class="m-0" style="font-family:'cairo';">تقييمات و نسب</h3>
+	<h3 class="m-0" style="font-family:'cairo';">تقييمات و نسب
+		<span class="iconify" data-icon="mdi:star" style="width: 24px; height:24px;"></span>
+	</h3>
 	<span>هي نسب مئوية لالتزامك في كل قسم</span>
 	</div>
 	</div>
@@ -182,8 +188,8 @@
 	<div class="tipWrap">
 	<span class="tip"></span>
 	</div>
-	<span class="fill" data-percentage="50"></span>
-	</div>
+	<span class="fill" id="att_grade"></span>
+</div>
 	</div>
 	</div>
 	<div class="col-lg-6">
@@ -193,7 +199,7 @@
 	<div class="tipWrap">
 	<span class="tip"></span>
 	</div>
-	<span class="fill" data-percentage="58"></span>
+	<span class="fill" data-percentage="75"></span>
 	</div>
 	</div>
 	</div>
@@ -204,7 +210,7 @@
 	<div class="tipWrap">
 	<span class="tip"></span>
 	</div>
-	<span class="fill" data-percentage="42"></span>
+	<span class="fill" id="exam_grade"></span>
 	</div>
 	</div>
 	</div>
@@ -215,7 +221,7 @@
 	<div class="tipWrap">
 	<span class="tip"></span>
 	</div>
-	<span class="fill" data-percentage="55"></span>
+	<span class="fill" id="melodies_grade"></span>
 	</div>
 	</div>
 	</div>
@@ -278,7 +284,52 @@
 
 
 	<script src="./assets/JS/jquery.waypoints.min.js"></script>
+	<script>
+		// Retrieve stored student data from localStorage
+		var name = localStorage.getItem('name');
+		var grade1 = localStorage.getItem('grade1');
+		var grade2 = localStorage.getItem('grade2');
+		var grade3 = localStorage.getItem('grade3');	
+		var grade4 = localStorage.getItem('grade4');	
+		var p = localStorage.getItem('P');	
+		var l = localStorage.getItem('L');	
+		var vl = localStorage.getItem('VL');	
+		var u = localStorage.getItem('U');	
+		var e = localStorage.getItem('E');	
+		var att_grade = localStorage.getItem('att_grade');
+		var exam_grade = localStorage.getItem('exam_grade');
+		var melodies_grade = localStorage.getItem('melodies_grade');
 
+		document.getElementById('namePlaceholder').textContent = name;
+		document.getElementById('grade1Placeholder').textContent = grade1;
+		document.getElementById('grade2Placeholder').textContent = grade2;
+		document.getElementById('grade3Placeholder').textContent = grade3;
+		document.getElementById('grade4Placeholder').textContent = grade4;
+		document.getElementById('p').textContent = p;
+		document.getElementById('l').textContent = l;
+		document.getElementById('vl').textContent = vl;
+		document.getElementById('u').textContent = u;
+		document.getElementById('e').textContent = e;
+		document.getElementById('att_grade').setAttribute('data-percentage', att_grade);
+		document.getElementById('exam_grade').setAttribute('data-percentage', exam_grade);
+		document.getElementById('melodies_grade').setAttribute('data-percentage', melodies_grade);
+
+		
+		localStorage.removeItem('name');
+		localStorage.removeItem('grade1');
+		localStorage.removeItem('grade2');
+		localStorage.removeItem('grade3');
+		localStorage.removeItem('grade4');
+		localStorage.removeItem('P');
+		localStorage.removeItem('L');
+		localStorage.removeItem('VL');
+		localStorage.removeItem('U');
+		localStorage.removeItem('E');
+		localStorage.removeItem('att_grade');
+		localStorage.removeItem('exam_grade');
+		localStorage.removeItem('melodies_grade');
+		
+	  </script>
 <script src="./assets/JS/Chart.min.js"></script>
 
 <script src="./assets/JS/jquery.counterup.min.js"></script>
@@ -333,6 +384,8 @@
             $(".footer_part ").removeClass("full_footer");
         }
      });
-    </script>
+</script>
+
+
 </body>
 </html>

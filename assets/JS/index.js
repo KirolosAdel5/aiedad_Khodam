@@ -62,9 +62,18 @@ function get() {
 
     // Store student data in localStorage
     localStorage.setItem('name', data.name);
-    localStorage.setItem('grade1', data.grade1);
+    localStorage.setItem('grade1', data.grade1 );
     localStorage.setItem('grade2', data.grade2);
     localStorage.setItem('grade3', data.grade3);
+    localStorage.setItem('grade4', data.grade4);
+    localStorage.setItem('P', data.P);
+    localStorage.setItem('L', data.L);
+    localStorage.setItem('VL', data.VL);
+    localStorage.setItem('U', data.U);
+    localStorage.setItem('E', data.E);
+    localStorage.setItem('att_grade', data.att_grade);
+    localStorage.setItem('exam_grade', data.exam_grade);
+    localStorage.setItem('melodies_grade', data.melodies_grade);
 
     // Redirect to next page (e.g., 'next-page.html')
     window.location.href = 'singelPage.html';
