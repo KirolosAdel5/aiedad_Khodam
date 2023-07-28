@@ -285,49 +285,24 @@
 
 	<script src="./assets/JS/jquery.waypoints.min.js"></script>
 	<script>
+
+		const studentData = JSON.parse(localStorage.getItem('studentData'));
 		// Retrieve stored student data from localStorage
-		var name = localStorage.getItem('name');
-		var grade1 = localStorage.getItem('grade1');
-		var grade2 = localStorage.getItem('grade2');
-		var grade3 = localStorage.getItem('grade3');	
-		var grade4 = localStorage.getItem('grade4');	
-		var p = localStorage.getItem('P');	
-		var l = localStorage.getItem('L');	
-		var vl = localStorage.getItem('VL');	
-		var u = localStorage.getItem('U');	
-		var e = localStorage.getItem('E');	
-		var att_grade = localStorage.getItem('att_grade');
-		var exam_grade = localStorage.getItem('exam_grade');
-		var melodies_grade = localStorage.getItem('melodies_grade');
-
-		document.getElementById('namePlaceholder').textContent = name;
-		document.getElementById('grade1Placeholder').textContent = grade1;
-		document.getElementById('grade2Placeholder').textContent = grade2;
-		document.getElementById('grade3Placeholder').textContent = grade3;
-		document.getElementById('grade4Placeholder').textContent = grade4;
-		document.getElementById('p').textContent = p;
-		document.getElementById('l').textContent = l;
-		document.getElementById('vl').textContent = vl;
-		document.getElementById('u').textContent = u;
-		document.getElementById('e').textContent = e;
-		document.getElementById('att_grade').setAttribute('data-percentage', att_grade);
-		document.getElementById('exam_grade').setAttribute('data-percentage', exam_grade);
-		document.getElementById('melodies_grade').setAttribute('data-percentage', melodies_grade);
-
 		
-		localStorage.removeItem('name');
-		localStorage.removeItem('grade1');
-		localStorage.removeItem('grade2');
-		localStorage.removeItem('grade3');
-		localStorage.removeItem('grade4');
-		localStorage.removeItem('P');
-		localStorage.removeItem('L');
-		localStorage.removeItem('VL');
-		localStorage.removeItem('U');
-		localStorage.removeItem('E');
-		localStorage.removeItem('att_grade');
-		localStorage.removeItem('exam_grade');
-		localStorage.removeItem('melodies_grade');
+
+		document.getElementById('namePlaceholder').textContent = studentData.name;
+		document.getElementById('grade1Placeholder').textContent = studentData.grade1;
+		document.getElementById('grade2Placeholder').textContent = studentData.grade2;
+		document.getElementById('grade3Placeholder').textContent = studentData.grade3;
+		document.getElementById('grade4Placeholder').textContent = studentData.grade4;
+		document.getElementById('p').textContent = studentData.P;
+		document.getElementById('l').textContent = studentData.L;
+		document.getElementById('vl').textContent = studentData.VL;
+		document.getElementById('u').textContent = studentData.U;
+		document.getElementById('e').textContent = studentData.E;
+		document.getElementById('att_grade').setAttribute('data-percentage', studentData.att_grade);
+		document.getElementById('exam_grade').setAttribute('data-percentage', studentData.exam_grade);
+		document.getElementById('melodies_grade').setAttribute('data-percentage', studentData.melodies_grade);
 		
 	  </script>
 <script src="./assets/JS/Chart.min.js"></script>

@@ -54,30 +54,51 @@ document.getElementById('smt-btn').addEventListener('click', function() {
   get();
 });
 function get() {
-  var code = document.getElementById('code').value;
+  
+  const code = document.getElementById('code').value;
 
-  var user_ref = database.ref('users/' + code);
-  user_ref.on('value', function(snapshot) {
-    var data = snapshot.val();
+  const apiKey = 'AIzaSyDr_TALrhqEKa9To7YtDnNOmEiH8m4mFSc'; // Replace with your Google Sheets API key
+  const spreadsheetId = '1yp_eVf06efyM8jJE63T2gb6AP-u4oZeb4xJInHsjMxQ'; // Replace with your Google Sheets spreadsheet ID
+  const range = `Exams!A2:O`; // Adjust the range to include all data rows from your sheet
 
-    // Store student data in localStorage
-    localStorage.setItem('name', data.name);
-    localStorage.setItem('grade1', data.grade1 );
-    localStorage.setItem('grade2', data.grade2);
-    localStorage.setItem('grade3', data.grade3);
-    localStorage.setItem('grade4', data.grade4);
-    localStorage.setItem('P', data.P);
-    localStorage.setItem('L', data.L);
-    localStorage.setItem('VL', data.VL);
-    localStorage.setItem('U', data.U);
-    localStorage.setItem('E', data.E);
-    localStorage.setItem('att_grade', data.att_grade);
-    localStorage.setItem('exam_grade', data.exam_grade);
-    localStorage.setItem('melodies_grade', data.melodies_grade);
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
-    // Redirect to next page (e.g., 'next-page.html')
-    window.location.href = 'singelPage.html';
-  });
+
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+      const rows = data.values;
+      const filteredRow = rows.find(row => row[0] === code);
+
+      if (filteredRow) {
+          // Create an object to store the data
+          const dataToSend = {
+              name: filteredRow[1],
+              grade1: filteredRow[2],
+              grade2: filteredRow[3],
+              grade3: filteredRow[4],
+              grade4: filteredRow[5],
+              P: filteredRow[6],
+              L: filteredRow[7],
+              VL: filteredRow[8],
+              U: filteredRow[9],
+              E: filteredRow[10],
+              att_grade: filteredRow[11],
+              exam_grade: filteredRow[12],
+              melodies_grade: filteredRow[13]
+          };
+
+          // Store the student data in localStorage
+          localStorage.setItem('studentData', JSON.stringify(dataToSend));
+
+          // Redirect to singelPage.html
+          window.location.href = 'singelPage.html';
+      } else {
+          document.getElementById('data-table').innerHTML = 'Code not found!';
+      }
+  })
+  .catch(error => console.error('Error fetching data:', error));
+
 }
 
 
