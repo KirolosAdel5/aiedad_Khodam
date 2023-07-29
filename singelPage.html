@@ -184,6 +184,7 @@
 	<div class="col-lg-6">
 	<div class="single_progressbar">
 	<h6 class="f_s_14 f_w_400">درجات الحضور</h6>
+	<br>
 	<div id="bar4" class="barfiller">
 	<div class="tipWrap">
 	<span class="tip"></span>
@@ -195,17 +196,21 @@
 	<div class="col-lg-6">
 	<div class="single_progressbar">
 	<h6>النوتة الروحية</h6>
+	<br>
+
 	<div id="bar5" class="barfiller">
 	<div class="tipWrap">
 	<span class="tip"></span>
 	</div>
-	<span class="fill" data-percentage="75"></span>
+	<span class="fill" id="spiritual_note"></span>
 	</div>
 	</div>
 	</div>
 	<div class="col-lg-6">
 	<div class="single_progressbar">
 	<h6>الامتحانات</h6>
+	<br>
+
 	<div id="bar6" class="barfiller">
 	<div class="tipWrap">
 	<span class="tip"></span>
@@ -217,6 +222,8 @@
 	<div class="col-lg-6">
 	<div class="single_progressbar">
 	<h6>الالحان</h6>
+	<br>
+
 	<div id="bar7" class="barfiller">
 	<div class="tipWrap">
 	<span class="tip"></span>
@@ -303,6 +310,8 @@
 		document.getElementById('att_grade').setAttribute('data-percentage', studentData.att_grade);
 		document.getElementById('exam_grade').setAttribute('data-percentage', studentData.exam_grade);
 		document.getElementById('melodies_grade').setAttribute('data-percentage', studentData.melodies_grade);
+		document.getElementById('spiritual_note').setAttribute('data-percentage', studentData.spiritual_note);
+		
 		
 	  </script>
 <script src="./assets/JS/Chart.min.js"></script>

@@ -85,7 +85,8 @@ function get() {
               E: filteredRow[10],
               att_grade: filteredRow[11],
               exam_grade: filteredRow[12],
-              melodies_grade: filteredRow[13]
+              melodies_grade: filteredRow[13],
+              spiritual_note: filteredRow[14],
           };
 
           // Store the student data in localStorage
@@ -97,7 +98,11 @@ function get() {
           document.getElementById('data-table').innerHTML = 'Code not found!';
       }
   })
-  .catch(error => console.error('Error fetching data:', error));
+  .catch(error => {
+    console.error('Error fetching data:', error);
+    // Refresh the page on error
+    window.location.reload();
+});
 
 }
 
