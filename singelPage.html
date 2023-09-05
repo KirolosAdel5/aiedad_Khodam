@@ -21,20 +21,34 @@
 
 </head>
 <body class="crm_body_bg" dir="rtl">
-
 	<header>
-		<nav>
+		<nav dir="ltr">
+			<div class="burger-menu">
+				<div class="burger-icon" style="width: 45px; height:45px;">
+					<span class="iconify" data-icon="mdi:menu" style="width: 40px; height:40px; color:aliceblue"></span>
 
-		  <ul>
-			<li><a href="#"><img src="./assets/images/paper.png" alt="logo" width="40" height="40"></a></li>
+				</div>
+				<div class="close-icon" style="display: none;">
+					<span class="iconify" data-icon="mdi:close" style="width: 40px; height:40px; color:aliceblue"></span>
 
-			<li><a href="#quizes">الامتحانات</a></li>
-			<li><a href="#attendance">الحضور</a></li>
-			<li><a href="#rating">تقييم</a></li>
-			<li><a href="#lectures">المحاضرات</a></li>
-		  </ul>
+				</div>
+			</div>
+			<ul class="menu">
+				<li><a href="#quizes">الامتحانات</a></li>
+				<li><a href="#attendance">الحضور</a></li>
+				<li><a href="#rating">تقييم</a></li>
+				<li><a href="#lectures">المحاضرات</a></li>
+				<li><a href="./al7an.html">الالحان</a></li>
+			</ul>
+			<div class="logo">
+				<a href="#"><img src="./assets/images/paper.png" alt="logo" width="40" height="40"></a>
+			</div>
 		</nav>
 	</header>
+	
+	
+	
+	
 
 
 	<section  id="" class="main_content dashboard_part large_header_bg" style="margin-top: 100px;">
@@ -272,8 +286,16 @@
 		<div id="lecture-list" class="media_card_list">
 		
 		</div>
+		<br>
+		<div class="buttonContainer" style="align-items: center;">
+			<button class="acceptButton"> 					
+				<span class="iconify" data-icon="mdi:arrow-right" style="width: 24px; height:24px; color:aliceblue"></span>
+				جميع المحاضرات  </button>
+		 </div>
 	</div>
+
 	</div>
+
 </div>
 
 
@@ -309,7 +331,7 @@
 	</a>
 	</div>
 	<script src="./assets/JS/lectureSection.js"></script>
-
+	<script src="./assets/JS/index.js"></script>
 	<script src="./assets/JS/jquery1-3.4.1.min.js"></script>
 	
 	<script src="./assets/JS/popper1.min.js"></script>
@@ -349,7 +371,7 @@
 		document.getElementById('att_grade').setAttribute('data-percentage', studentData.att_grade);
 		document.getElementById('exam_grade').setAttribute('data-percentage', studentData.exam_grade);
 		document.getElementById('melodies_grade').setAttribute('data-percentage', studentData.melodies_grade);
-		document.getElementById('spiritual_note').setAttribute('data-percentage', studentData.spiritual_note);
+		document.getElementById('spiritual_note').setAttribute('data-percentage', "100");
 		
 		
 	  </script>
