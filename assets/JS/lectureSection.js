@@ -92,6 +92,7 @@ closeIcon.addEventListener('click', function () {
 // Get all the radio buttons and their corresponding content divs
 const radioButtons = document.querySelectorAll('input.slide-toggle');
 const contentDivs = document.querySelectorAll('div[id^="content-"]');
+const emptyState = document.getElementById('emptyState');
 
 // Add event listeners to radio buttons
 radioButtons.forEach((radio, index) => {
@@ -103,6 +104,8 @@ radioButtons.forEach((radio, index) => {
 
         // Show the corresponding content div
         contentDivs[index].style.display = 'block';
+        emptyState.style.display = 'none';
+
     });
 });
 
@@ -125,5 +128,19 @@ videos.forEach((video) => {
                 v.pause();
             }
         });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Find the button by its id
+    const goToPageButton = document.getElementById('allLectures');
+
+    // Add a click event listener to the button
+    goToPageButton.addEventListener('click', function () {
+        // Specify the URL of the HTML page you want to navigate to
+        const targetPageUrl = './allLectures.html';
+
+        // Use window.location to navigate to the target page
+        window.location.href = targetPageUrl;
     });
 });
