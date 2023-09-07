@@ -233,6 +233,13 @@ a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-b
   }
   /* stylelint-enable declaration-no-important */
 
+  .content {
+    display: none;
+  }
+  
+  .content.active {
+    display: block;
+  }
 </style>
 
 <link rel="stylesheet" href="asset2/hs-fs/hub/22036085/hub_generated/module_assets/112647434628/1692907388821/module_112647434628_Featured_Blog_Post.min.css">
@@ -638,7 +645,7 @@ if (!useGoogleConsentMode){
 </div>
 <div class="blog-tags-container">
   <div class="blog-tags-wrapper" tabindex="0">
-    <div class="text-md regular-weight">كل المحاضرات</div>
+    <div class="text-md regular-weight" id="placeholderchoice">كل المحاضرات</div>
     <div class="tags-icon-container">
       <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" width="12" aria-hidden="true"><g id="chevron-down1_layer"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" /></g></svg>
     </div>
@@ -662,7 +669,7 @@ if (!useGoogleConsentMode){
   </div>
 </div>
 
-  <div class="taks-container" data-content="weather">
+  <div class="content" data-content="weather">
     <div style="border-bottom: 1px solid #e5e5e5; height: 50px; margin-bottom: 15px; margin-top: 15px" >
 
       <h1 style="font-family: cairo;">محاضرات الطقس</h1>
@@ -1075,7 +1082,7 @@ if (!useGoogleConsentMode){
     </div>  
   </div>
 
-  <div class="eaqida-container" data-content="belief">
+  <div class="content" data-content="belief">
     <div style="border-bottom: 1px solid #e5e5e5; height: 50px; margin-bottom: 15px; margin-top: 15px" >
 
       <h1 style="font-family: cairo;">محاضرات العقيدة</h1>
@@ -1128,7 +1135,7 @@ if (!useGoogleConsentMode){
   
 
   </div>
-  <div class="tarikh_kanisa-container" data-content="church-history">
+  <div class="content" data-content="church-history">
     <div style="border-bottom: 1px solid #e5e5e5; height: 50px; margin-bottom: 15px; margin-top: 15px" >
 
       <h1 style="font-family: cairo;">محاضرات تاريخ الكنيسة</h1>
@@ -1182,7 +1189,7 @@ if (!useGoogleConsentMode){
 
   </div>  
 
-  <div class="Bible-container">
+  <div class="content" data-content="bible">
     <div style="border-bottom: 1px solid #e5e5e5; height: 50px; margin-bottom: 15px; margin-top: 15px" >
 
       <h1 style="font-family: cairo;">محاضرات الكتاب المقدس</h1>
@@ -1794,6 +1801,43 @@ var hsVars = {
 }(document, 'script', 'facebook-jssdk'));</script>
  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
  
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>
+  $(document).ready(function() {
+    // Show all content divs by default
+    $('.content').addClass('active');
+      
+    $('.blog-tag-option').click(function(e) {
+      e.preventDefault();
+      var selectedText = $(this).text();
+      
+      // Update the text inside the specified div with the selected text
+      const placeholder = document.getElementById('placeholderchoice');
+      placeholder.textContent = selectedText;
+      
+      var selectedTag = $(this).data('tag');
+      
+      // Remove "active" class from all choices
+      $('.blog-tag-option').removeClass('active');
+      
+      // Add "active" class to the selected choice
+      $(this).addClass('active');
+      
+      // Show or hide content divs based on the selected tag
+      if (selectedTag === 'all') {
+        // Show all content divs
+        $('.content').addClass('active');
+      } else {
+        // Hide all content divs
+        $('.content').removeClass('active');
+        
+        // Show the content div corresponding to the selected tag
+        $('.content[data-content="' + selectedTag + '"]').addClass('active');
+      }
+    });
+  });
+  
+ </script>
 
 
   
