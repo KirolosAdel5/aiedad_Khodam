@@ -1,4 +1,5 @@
-<!doctype html><html lang="en"><head>
+<!doctype html><html lang="en">
+<head>
     <meta charset="utf-8">
     <title>اسرة القديس يوحنا المعمدان لإعداد الخدام</title>
     <link rel="icon" href="./assets/images/paper.png" type="image/png">
@@ -329,14 +330,26 @@ if (!useGoogleConsentMode){
 
 
     <script src="asset2/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <meta name="generator" content="HubSpot"></head>
-  <body dir="rtl" style="font-family: cairo">
+  <meta name="generator" content="HubSpot">
+</head>
+
+
+<body dir="rtl" style="font-family: cairo">
 <!--  Added by GoogleTagManager integration -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B99W9J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- /Added by GoogleTagManager integration -->
-
-    <div class="body-wrapper   hs-content-id-122370613795 hs-blog-listing hs-blog-id-122370613794 blog  dark-theme">
+<div id="splash-screen" style="background-color: black;display:inline-grid;justify-items: center;align-items: end;align-content:center;" >
+  <img src="./assets/images/paper.png" alt="لوجو اسرةالقديس يوحنا">
+  <br>
+  <div style="color: aliceblue;text-align: center;">
+    <h2 class="title" style="font-family:cairo;">اسرة القديس يوحنا المعمدان </h2>
+    <h3 style="font-family:cairo;">لإعداد الخدام</h3>
+    <br>
+  </div>
+  <img src="./assets/images/loader.gif" alt="loader" width="40%">
+  <p style="color: aliceblue;text-align: center;">.... loading</p>
+</div>
+<div id="body-wrapper" class="body-wrapper   hs-content-id-122370613795 hs-blog-listing hs-blog-id-122370613794 blog  dark-theme">
       
       <div data-global-resource-path="Glance/templates/partials/header.html">
 
@@ -1007,9 +1020,8 @@ if (!useGoogleConsentMode){
   </div>
 </footer></div>
       
-    </div>
-
-    
+</div>
+ 
     
 <!-- HubSpot performance collection script -->
 <script defer src="asset2/content-cwv-embed/static-1.388/embed.js"></script>
@@ -1433,6 +1445,20 @@ var hsVars = {
   
  </script>
 
+ <script>
+  window.addEventListener('load', () => {
+    // Initially, the splash screen is visible
+    const splashScreen = document.getElementById('splash-screen');
+    const mainContent = document.getElementById('body-wrapper');
 
+    // After 1 second, hide the splash screen and slide up the main content
+    setTimeout(() => {
+        splashScreen.style.opacity = 0;
+        mainContent.style.top = '0'; // Slide it up to the top
+    }, 3000); // 1000 milliseconds = 1 second
+});
+
+</script>
+   
   
 </body></html>
