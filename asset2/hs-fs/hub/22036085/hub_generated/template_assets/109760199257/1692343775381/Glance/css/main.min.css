@@ -31,3 +31,10 @@
     overflow: auto; /* Allow scrolling on the main content */
 
 }
+
+audio {
+    background-color: #b4e6fc;
+    
+    padding: 10px;
+    border-radius: 50px;
+  }
