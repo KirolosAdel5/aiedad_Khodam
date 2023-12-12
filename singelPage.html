@@ -4,7 +4,7 @@
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>دفعة القديس بطرس</title>
+<title>اسرة القديس يوحنا المعمدان لإعداد الخدام</title>
 <link rel="icon" href="./assets/images/paper.png" type="image/png">
 
 <link rel="stylesheet" href="./assets/css/bootstrap1.min.css" />
@@ -35,10 +35,7 @@
 			</div>
 			<ul class="menu">
 				<li><a href="#quizes">الامتحانات</a></li>
-				<li><a href="#attendance">الحضور</a></li>
-				<li><a href="#rating">تقييم</a></li>
-				<li><a href="./allLectures.html">المحاضرات</a></li>
-				<li><a href="./al7an.html">الالحان</a></li>
+				<li><a href="./index.html">المحاضرات</a></li>
 			</ul>
 			<div class="logo">
 				<a href="#"><img src="./assets/images/paper.png" alt="logo" width="40" height="40"></a>
@@ -109,25 +106,15 @@
 	<div class="sales_card_body">
 	<div class="single_sales">
 	<span>الامتحان الاول</span>
-	<h3 id="grade1Placeholder"></h3>
+	<h3 id="grade1Placeholder"></h3> /50
+		 <h5 id="bonus1Placeholder" style="color:green;"></h5>
+
 	</div>
-	<div class="single_sales">
-	<span>المتحان الثاني</span>
-	<h3 id="grade2Placeholder"></h3>
-	</div>
-	<div class="single_sales">
-	<span>الامتحان الثالث</span>
-	<h3 id="grade3Placeholder"></h3>
-	</div>
-	<div class="single_sales">
-	<span>الامتحان الرابع</span>
-	<h3 id="grade4Placeholder"></h3>
-	</div>
-	
+
 	</div>
 	</div>
 	</div>
-	<div class="col-xl-4 " id="attendance">
+	<!-- <div class="col-xl-4 " id="attendance">
 	<div class="white_card card_height_100 mb_30 social_media_card">
 	<div class="white_card_header">
 	<div class="main-title">
@@ -188,10 +175,10 @@
 	</div>
 	</div>
 	</div>
-	</div>
+	</div> -->
 
 	
-<div class="col-xl-7" id="rating">
+<!-- <div class="col-xl-7" id="rating">
 	<div class="white_card card_height_100  mb_20">
 	<div class="white_card_header">
 	<div class="box_header m-0">
@@ -268,38 +255,7 @@
 	</div>
 	</div>
 	</div>
-</div>
-
-<div class="col-xl-7" id="lectures">
-	<div class="white_card card_height_100 mb_30 social_media_card">
-	<div class="white_card_header">
-	<div class="box_header m-0">
-	<div class="main-title">
-	<h3 class="m-0" style="font-family:'cairo';">المحاضرات
-		<span class="iconify" data-icon="mdi:book" style="width: 24px; height:24px;"></span>
-	</h3>
-	<span>هي جزء لتحميل و معاينة المحاضرات</span>
-	</div>
-	</div>
-	</div>
-	<div class="media_card_body">
-		<div id="lecture-list" class="media_card_list">
-		
-		</div>
-		<br>
-		<div class="buttonContainer" style="align-items: center;">
-			<button class="acceptButton" id="allLectures"> 					
-				<span class="iconify" data-icon="mdi:arrow-right" style="width: 24px; height:24px; color:aliceblue"></span>
-				جميع المحاضرات  </button>
-		 </div>
-	</div>
-
-	</div>
-
-</div>
-
-
-
+</div> -->
 
 
 	</div>
@@ -359,20 +315,8 @@
 		
 
 		document.getElementById('namePlaceholder').textContent = studentData.name;
-		document.getElementById('grade1Placeholder').textContent = studentData.grade1;
-		document.getElementById('grade2Placeholder').textContent = studentData.grade2;
-		document.getElementById('grade3Placeholder').textContent = studentData.grade3;
-		document.getElementById('grade4Placeholder').textContent = studentData.grade4;
-		document.getElementById('p').textContent = studentData.P;
-		document.getElementById('l').textContent = studentData.L;
-		document.getElementById('vl').textContent = studentData.VL;
-		document.getElementById('u').textContent = studentData.U;
-		document.getElementById('e').textContent = studentData.E;
-		document.getElementById('att_grade').setAttribute('data-percentage', studentData.att_grade);
-		document.getElementById('exam_grade').setAttribute('data-percentage', studentData.exam_grade);
-		document.getElementById('melodies_grade').setAttribute('data-percentage', studentData.melodies_grade);
-		document.getElementById('spiritual_note').setAttribute('data-percentage', "100");
-		
+		document.getElementById('grade1Placeholder').textContent = studentData.grade1;		
+		document.getElementById('bonus1Placeholder').textContent = "+" + studentData.bonus1 + " بونص ";		
 		
 	  </script>
 <script src="./assets/JS/Chart.min.js"></script>

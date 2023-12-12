@@ -58,7 +58,8 @@ function get() {
   const code = document.getElementById('code').value;
 
   const apiKey = 'AIzaSyDr_TALrhqEKa9To7YtDnNOmEiH8m4mFSc'; // Replace with your Google Sheets API key
-  const spreadsheetId = '1yp_eVf06efyM8jJE63T2gb6AP-u4oZeb4xJInHsjMxQ'; // Replace with your Google Sheets spreadsheet ID
+  const spreadsheetId = '1yp_eVf06efyM8jJE63T2gb6AP-u4oZeb4xJInHsjMxQ';
+   // Replace with your Google Sheets spreadsheet ID
   const range = `Exams!A2:O`; // Adjust the range to include all data rows from your sheet
 
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
@@ -68,25 +69,14 @@ function get() {
   .then(response => response.json())
   .then(data => {
       const rows = data.values;
-      const filteredRow = rows.find(row => row[0] === code);
+      const filteredRow = rows.find(row => row[3] === code);
 
       if (filteredRow) {
           // Create an object to store the data
           const dataToSend = {
               name: filteredRow[1],
-              grade1: filteredRow[2],
-              grade2: filteredRow[3],
-              grade3: filteredRow[4],
-              grade4: filteredRow[5],
-              P: filteredRow[6],
-              L: filteredRow[7],
-              VL: filteredRow[8],
-              U: filteredRow[10],
-              E: filteredRow[9],
-              att_grade: filteredRow[11],
-              exam_grade: filteredRow[12],
-              melodies_grade: filteredRow[13],
-              spiritual_note: filteredRow[14],
+              grade1: filteredRow[4],
+              bonus1: filteredRow[5],
           };
 
           // Store the student data in localStorage
@@ -101,7 +91,8 @@ function get() {
   .catch(error => {
     console.error('Error fetching data:', error);
     // Refresh the page on error
-    window.location.reload();
+    const errorMessageElement = document.getElementById('error-message');
+    errorMessageElement.innerHTML = 'حدث خطاء ما اماانك تكون غير مسجل فالفورم او انك تكتب الرقم القومي بشكل خاطئ';
 });
 
 }
