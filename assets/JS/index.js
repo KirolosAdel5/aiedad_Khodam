@@ -58,7 +58,7 @@ function get() {
   const code = document.getElementById('code').value;
 
   const apiKey = 'AIzaSyDr_TALrhqEKa9To7YtDnNOmEiH8m4mFSc'; // Replace with your Google Sheets API key
-  const spreadsheetId = '1yp_eVf06efyM8jJE63T2gb6AP-u4oZeb4xJInHsjMxQ';
+  const spreadsheetId = '1TDep2wG7g8_MGM54zU9fmDdw7E2k5A2yc1Khk-EoRJA';
    // Replace with your Google Sheets spreadsheet ID
   const range = `Exams!A2:O`; // Adjust the range to include all data rows from your sheet
 
@@ -77,6 +77,8 @@ function get() {
               name: filteredRow[1],
               grade1: filteredRow[4],
               bonus1: filteredRow[5],
+              grade2: filteredRow[6],
+              bonus2: filteredRow[7],
           };
 
           // Store the student data in localStorage

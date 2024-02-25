@@ -111,6 +111,12 @@
 
 	</div>
 
+	<div class="single_sales">
+		<span>الامتحان الثاني</span>
+		<h3 id="grade2Placeholder"></h3> /50
+			 <h5 id="bonus2Placeholder" style="color:green;"></h5>
+	
+		</div>	
 	</div>
 	</div>
 	</div>
@@ -315,9 +321,16 @@
 		
 
 		document.getElementById('namePlaceholder').textContent = studentData.name;
-		document.getElementById('grade1Placeholder').textContent = studentData.grade1;		
-		document.getElementById('bonus1Placeholder').textContent = "+" + studentData.bonus1 + " بونص ";		
+		var grade1 = studentData.grade1 || "لم تحضر";
+		document.getElementById('grade1Placeholder').textContent = grade1;
+		var bonus1 = studentData.bonus1 !== undefined ? studentData.bonus1 : 0;
+		document.getElementById('bonus1Placeholder').textContent = "+" + bonus1 + " بونص ";
 		
+		var grade2 = studentData.grade2|| "لم تحضر";
+		document.getElementById('grade2Placeholder').textContent = grade2;
+		var bonus2 = studentData.bonus2 !== undefined ? studentData.bonus2 : 0;
+		document.getElementById('bonus2Placeholder').textContent = "+" + bonus2 + " بونص ";
+				
 	  </script>
 <script src="./assets/JS/Chart.min.js"></script>
 
