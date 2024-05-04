@@ -79,6 +79,9 @@ function get() {
               bonus1: filteredRow[5],
               grade2: filteredRow[6],
               bonus2: filteredRow[7],
+              grade3: filteredRow[8],
+              bonus3: filteredRow[9],
+
           };
 
           // Store the student data in localStorage
