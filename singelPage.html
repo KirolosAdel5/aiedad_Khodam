@@ -124,6 +124,11 @@
 		<h5 id="bonus3Placeholder" style="color:green;"></h5>
 	
 	</div>	
+
+	<div class="single_sales">
+		<span>الامتحان الرابع</span>
+		<h3 id="grade4Placeholder"></h3> /50	
+	</div>	  
 	</div>
 	</div>
 	</div>
@@ -344,6 +349,8 @@
 		var bonus3 = studentData.bonus3 !== undefined ? studentData.bonus3 : 0;
 		document.getElementById('bonus3Placeholder').textContent = "+" + bonus3 + " بونص ";
 
+    var grade4 = studentData.grade4|| "لم تحضر";
+		document.getElementById('grade4Placeholder').textContent = grade4;
 	  </script>
 <script src="./assets/JS/Chart.min.js"></script>
 

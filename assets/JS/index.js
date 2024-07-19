@@ -81,6 +81,7 @@ function get() {
               bonus2: filteredRow[7],
               grade3: filteredRow[8],
               bonus3: filteredRow[9],
+              grade4: filteredRow[10],
 
           };
 
