@@ -3795,11 +3795,11 @@ var hsVars = {
  
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  <script>
-  // Existing script
   $(document).ready(function() {
       // Show all content divs by default
       $('.content').addClass('active');
-      
+
+      // Handle tag filtering
       $('.blog-tag-option').click(function(e) {
           e.preventDefault();
           var selectedText = $(this).text();
@@ -3827,25 +3827,42 @@ var hsVars = {
               // Show the content div corresponding to the selected tag
               $('.content[data-content="' + selectedTag + '"]').addClass('active');
           }
+
+          // Apply search filter after tag filtering
+          filterContent();
       });
-  
+
       // Search functionality
-      $('#searchBar').on('keyup', function() {
-          var searchText = $(this).val().toLowerCase();
+      $('#searchBar').on('keyup', filterContent);
+
+      // Filter content based on search input
+      function filterContent() {
+          var searchText = $('#searchBar').val().toLowerCase();
           
-          // Loop through all content divs
           $('.content').each(function() {
-              var lectureName = $(this).text().toLowerCase();
-              
-              if (lectureName.indexOf(searchText) !== -1) {
-                  $(this).addClass('active');
+              var section = $(this);
+              var isVisible = false;
+
+              section.find('.blog-post-card').each(function() {
+                  var cardText = $(this).text().toLowerCase();
+
+                  if (cardText.indexOf(searchText) !== -1 || searchText === '') {
+                      $(this).show();
+                      isVisible = true;
+                  } else {
+                      $(this).hide();
+                  }
+              });
+
+              if (section.hasClass('active') && isVisible) {
+                  section.show();
               } else {
-                  $(this).removeClass('active');
+                  section.hide();
               }
           });
-      });
+      }
   });
-  </script>
+</script>
   
  <script>
   window.addEventListener('load', () => {
