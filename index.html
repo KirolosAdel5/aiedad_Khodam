@@ -690,8 +690,29 @@ if (!useGoogleConsentMode){
     <div class="blog-search-container">
 
 </div>
-<div class="blog-tags-container">
+<div class="blog-tags-container">    
+  <div style="position: relative; margin-bottom: 20px;">
+    <input type="text" id="searchBar" placeholder="ابحث عن محاضرة" style="
+        border: 1px solid var(--primary-400);
+        width: -webkit-fill-available;
+        height: 50px;
+        border-radius: 1.875rem;
+        padding: .625rem 2.5rem .625rem 1rem;
+    ">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" role="img" color="#31b8f7" style="
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+">
+    <path d="M17.5 17.5L22 22" stroke="#31b8f7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path opacity="0.1" d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z" fill="#31b8f7"></path>
+    <path d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z" stroke="#31b8f7" stroke-width="1.5" stroke-linejoin="round"></path>
+</svg>
+</div>
   <div class="blog-tags-wrapper" tabindex="0">
+
     <div class="text-md regular-weight" id="placeholderchoice">اختر القسم</div>
     <div class="tags-icon-container">
       <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512" width="12" aria-hidden="true"><g id="chevron-down1_layer"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" /></g></svg>
@@ -3774,42 +3795,58 @@ var hsVars = {
  
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  <script>
+  // Existing script
   $(document).ready(function() {
-    // Show all content divs by default
-    $('.content').addClass('active');
+      // Show all content divs by default
+      $('.content').addClass('active');
       
-    $('.blog-tag-option').click(function(e) {
-      e.preventDefault();
-      var selectedText = $(this).text();
-      
-      // Update the text inside the specified div with the selected text
-      const placeholder = document.getElementById('placeholderchoice');
-      placeholder.textContent = selectedText;
-      
-      var selectedTag = $(this).data('tag');
-      
-      // Remove "active" class from all choices
-      $('.blog-tag-option').removeClass('active');
-      
-      // Add "active" class to the selected choice
-      $(this).addClass('active');
-      
-      // Show or hide content divs based on the selected tag
-      if (selectedTag === 'all') {
-        // Show all content divs
-        $('.content').addClass('active');
-      } else {
-        // Hide all content divs
-        $('.content').removeClass('active');
-        
-        // Show the content div corresponding to the selected tag
-        $('.content[data-content="' + selectedTag + '"]').addClass('active');
-      }
-    });
-  });
+      $('.blog-tag-option').click(function(e) {
+          e.preventDefault();
+          var selectedText = $(this).text();
+          
+          // Update the text inside the specified div with the selected text
+          const placeholder = document.getElementById('placeholderchoice');
+          placeholder.textContent = selectedText;
+          
+          var selectedTag = $(this).data('tag');
+          
+          // Remove "active" class from all choices
+          $('.blog-tag-option').removeClass('active');
+          
+          // Add "active" class to the selected choice
+          $(this).addClass('active');
+          
+          // Show or hide content divs based on the selected tag
+          if (selectedTag === 'all') {
+              // Show all content divs
+              $('.content').addClass('active');
+          } else {
+              // Hide all content divs
+              $('.content').removeClass('active');
+              
+              // Show the content div corresponding to the selected tag
+              $('.content[data-content="' + selectedTag + '"]').addClass('active');
+          }
+      });
   
- </script>
-
+      // Search functionality
+      $('#searchBar').on('keyup', function() {
+          var searchText = $(this).val().toLowerCase();
+          
+          // Loop through all content divs
+          $('.content').each(function() {
+              var lectureName = $(this).text().toLowerCase();
+              
+              if (lectureName.indexOf(searchText) !== -1) {
+                  $(this).addClass('active');
+              } else {
+                  $(this).removeClass('active');
+              }
+          });
+      });
+  });
+  </script>
+  
  <script>
   window.addEventListener('load', () => {
     // Initially, the splash screen is visible
