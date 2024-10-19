@@ -60,7 +60,7 @@ function get() {
   const apiKey = 'AIzaSyDr_TALrhqEKa9To7YtDnNOmEiH8m4mFSc'; // Replace with your Google Sheets API key
   const spreadsheetId = '1TDep2wG7g8_MGM54zU9fmDdw7E2k5A2yc1Khk-EoRJA';
    // Replace with your Google Sheets spreadsheet ID
-  const range = `Exams!A2:O`; // Adjust the range to include all data rows from your sheet
+  const range = `Exams2!A2:O`; // Adjust the range to include all data rows from your sheet
 
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
