@@ -1415,9 +1415,10 @@ var hsVars = {
       'التربوي': 0,
       'معلومة علي الماشي': 0
     };
+
     // Skip the header row (start from index 1)
     for (let i = 1; i < rows.length; i++) {
-      const [title, description, imageUrl, link,type] = rows[i];
+      const [title, description, imageUrl, link, type, audio, attachment] = rows[i];
       
       const blogPostCard = `
       <div class="blog-post-card">
@@ -1425,54 +1426,61 @@ var hsVars = {
           ${type}
         </p>
         
-        
         <div class="blog-post-card-image-wrapper">
-          <img class="blog-card-deck-image" src="${imageUrl}" alt="">
+          <a href="${link}">
+            <img class="blog-card-deck-image" src="${imageUrl}" alt="">
+          </a>
         </div>
         
-  
         <div class="blog-card-copy-wrapper">
-      <div>
-          
-          
-          <a class="blog-post__tag-link" href="#">
-            <span class="tag-pill blog-card" data-style="light-blue">${type}</span>
-          </a>
-          
-          
-          <h3 class="blog-card-title medium-weight" style="font-family: cairo;">${title}</h3>
+          <div>
+            <a class="blog-post__tag-link" href="#">
+              <span class="tag-pill blog-card" data-style="light-blue">${type}</span>
+            </a>
+            
+            <h3 class="blog-card-title medium-weight" style="font-family: cairo;">${title}</h3>
+          </div>
+          <div>
+            <a class="read-now-link blog-card" href="${link}">
+              <span class="read-now-link-text blog-card text-md medium-weight" style="font-family: cairo;">
+                اقراء المزيد
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                  <path d="M1.66699 7.00002H13.3337M13.3337 7.00002L7.50033 1.16669M13.3337 7.00002L7.50033 12.8334" stroke="#0A121B" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+          </div>
 
-      </div>
-      <div>
-          
-          
-  
-          <a class="read-now-link blog-card" href="${link}">
-            <span class="read-now-link-text blog-card text-md medium-weight" style="font-family: cairo;">
-              اقراء الان
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewbox="0 0 15 14" fill="none">
-                <path d="M1.66699 7.00002H13.3337M13.3337 7.00002L7.50033 1.16669M13.3337 7.00002L7.50033 12.8334" stroke="#0A121B" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </span>
-          </a>
-      </div>
-          <a class="card-link blog-card" href="${link}"></a>
+          ${attachment ? `
+          <!-- Attachment link section, only added if attachment is not null -->
+          <br>
+          <div class="attachment-section">
+            <a href="${attachment}" target="_blank" class="attachment-link">
+              مرفقات اخري هامة 🗂️
+            </a>
+          </div>` : ''}
+          <br>
+
+          ${audio ? `
+          <!-- Audio iframe section, only added if audio is not null -->
+          <div style="height: 228px; width: 100%;">
+            <iframe src="https://audio.com/embed/audio/${audio}?theme=image" style="display: block; border-radius: 6px; border: none; height: 204px; width: 100%;"></iframe>
+            <a href="https://audio.com/st-john-the-baptist" style="text-align: center; display: block; color: #A4ABB6; font-size: 12px; font-family: sans-serif; line-height: 16px; margin-top: 8px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+              @القديس يوحنا المعمدان لاعداد الخدام
+            </a>
+          </div>` : ''}
         </div>
       </div>
-      
-    </div>
-    
-  </div>
-  <br>
-      `;
+      <br>`;
+
       if (gridContainers[type]) {
         gridContainers[type].innerHTML += blogPostCard;
-        typeCardCount[type]++;  // Increment the card count for this type
+        typeCardCount[type]++;
       } else {
         console.warn(`Unrecognized type: ${type}`);
       }
     }
-  
+
     // After populating the grids, check if any of the types had no posts
     for (const type in gridContainers) {
       if (typeCardCount[type] === 0) {
@@ -1483,7 +1491,9 @@ var hsVars = {
 
   // Load the sheet data on page load
   window.onload = fetchSheetData;
-</script>   
+</script>
+
+ 
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
