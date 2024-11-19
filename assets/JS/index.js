@@ -56,11 +56,17 @@ document.getElementById('smt-btn').addEventListener('click', function() {
 function get() {
   
   const code = document.getElementById('code').value;
+  
+  if (!code) {
+    const errorMessageElement = document.getElementById('error-message');
+    errorMessageElement.innerHTML = 'الرجاء ادخال الرقم القومي';
+    return; // Exit the function if the code is empty
+  }
 
-  const apiKey = 'AIzaSyDr_TALrhqEKa9To7YtDnNOmEiH8m4mFSc'; // Replace with your Google Sheets API key
-  const spreadsheetId = '1TDep2wG7g8_MGM54zU9fmDdw7E2k5A2yc1Khk-EoRJA';
-   // Replace with your Google Sheets spreadsheet ID
-  const range = `Exams2!A2:O`; // Adjust the range to include all data rows from your sheet
+  const apiKey = 'AIzaSyBReJ_2F6krOAcrZIdD5QJ4eDHN24EBYpY'; // Replace with your Google Sheets API key
+  const spreadsheetId = '1YN4Pt8N5G4sDTohLvs2VVyQRoiynDWR1TfZaKJGdlXU'; // New Google Sheets spreadsheet ID
+  // Replace with your Google Sheets spreadsheet ID
+  const range = `Exams!A2:G`; // Adjust the range to include all data rows from your sheet
 
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
