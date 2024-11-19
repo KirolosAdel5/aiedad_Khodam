@@ -69,10 +69,13 @@
 	<div class="col-12">
 	<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
 	<div class="page_title_left">
-	<div class="row mt-4">
-		<h3 class="f_s_25 f_w_700 dark_text" style="font-family: cairo;">اهلا بيك يا <span id="namePlaceholder"></span> 👋</h3>
-	
-	</div>
+    <div class="row mt-4">
+      <h3 class="f_s_25 f_w_700 dark_text" style="font-family: Cairo; text-align: right; direction: rtl;">
+        اهلا بيك 👋 <br>
+        <span id="namePlaceholder"></span> 
+      </h3>
+    </div>
+    
 </div>
 
 	</div>
@@ -104,31 +107,32 @@
 	</div>
 	
 	<div class="sales_card_body">
-	<div class="single_sales">
-	<span>الامتحان الاول</span>
-	<h3 id="grade1Placeholder"></h3> /50
-		 <h5 id="bonus1Placeholder" style="color:green;"></h5>
+    <div class="single_sales">
+    <span>الامتحان الاول</span>
+    <h3 id="grade1Placeholder"></h3> 
+      <h5 id="bonus1Placeholder" style="color:green;"></h5>
 
-	</div>
+    </div>
+    
+<!-- 
+    <div class="single_sales">
+      <span>الامتحان الثاني</span>
+      <h3 id="grade2Placeholder"></h3> /50
+      <h5 id="bonus2Placeholder" style="color:green;"></h5>
+    
+    </div>	
 
-	<div class="single_sales">
-		<span>الامتحان الثاني</span>
-		<h3 id="grade2Placeholder"></h3> /50
-		<h5 id="bonus2Placeholder" style="color:green;"></h5>
-	
-	</div>	
+    <div class="single_sales">
+      <span>الامتحان الثالث</span>
+      <h3 id="grade3Placeholder"></h3> /50
+      <h5 id="bonus3Placeholder" style="color:green;"></h5>
+    
+    </div>	
 
-	<div class="single_sales">
-		<span>الامتحان الثالث</span>
-		<h3 id="grade3Placeholder"></h3> /50
-		<h5 id="bonus3Placeholder" style="color:green;"></h5>
-	
-	</div>	
-
-	<div class="single_sales">
-		<span>الامتحان الرابع</span>
-		<h3 id="grade4Placeholder"></h3> /50	
-	</div>	  
+    <div class="single_sales">
+      <span>الامتحان الرابع</span>
+      <h3 id="grade4Placeholder"></h3> /50	
+    </div>	   -->
 	</div>
 	</div>
 	</div>
@@ -330,27 +334,45 @@
 
 		const studentData = JSON.parse(localStorage.getItem('studentData'));
 		// Retrieve stored student data from localStorage
-		
 
-		document.getElementById('namePlaceholder').textContent = studentData.name;
-		var grade1 = studentData.grade1 || "لم تحضر";
-		document.getElementById('grade1Placeholder').textContent = grade1;
-		var bonus1 = studentData.bonus1 !== undefined ? studentData.bonus1 : 0;
-		document.getElementById('bonus1Placeholder').textContent = "+" + bonus1 + " بونص ";
-		
-		var grade2 = studentData.grade2|| "لم تحضر";
-		document.getElementById('grade2Placeholder').textContent = grade2;
-		var bonus2 = studentData.bonus2 !== undefined ? studentData.bonus2 : 0;
-		document.getElementById('bonus2Placeholder').textContent = "+" + bonus2 + " بونص ";
-		
-				
-		var grade3 = studentData.grade3|| "لم تحضر";
-		document.getElementById('grade3Placeholder').textContent = grade3;
-		var bonus3 = studentData.bonus3 !== undefined ? studentData.bonus3 : 0;
-		document.getElementById('bonus3Placeholder').textContent = "+" + bonus3 + " بونص ";
+    // Update the placeholders with the student data
+    if (studentData) {
+      document.getElementById('namePlaceholder').textContent = studentData.name;
 
-    var grade4 = studentData.grade4|| "لم تحضر";
-		document.getElementById('grade4Placeholder').textContent = grade4;
+      var grade1 = studentData.grade1 || "لم تحضر";
+ 
+      var followup1 = studentData.followup1;
+      if (followup1 !== "1") {
+        grade1 = "لم تقدم ورقة فولو اب"; // Set the grade1 to "لم تقدم ورقة فولو اب"
+      } 
+      
+      // Check if grade1 is neither empty nor "none"
+      if (grade1 && grade1 !== "none" &&followup1!=="0") {
+        document.getElementById('grade1Placeholder').textContent = grade1 + " / 50";
+      } else {
+        document.getElementById('grade1Placeholder').textContent = grade1; // Just display the fallback message
+      }
+  
+  
+      var bonus1 = studentData.bonus1;
+      if (bonus1) {
+        document.getElementById('bonus1Placeholder').textContent = "+" + bonus1 + " بونص ";
+      } else {
+        document.getElementById('bonus1Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
+      }
+    }		//var grade2 = studentData.grade2|| "لم تحضر";
+		//document.getElementById('grade2Placeholder').textContent = grade2;
+		//var bonus2 = studentData.bonus2 !== undefined ? studentData.bonus2 : 0;
+		//document.getElementById('bonus2Placeholder').textContent = "+" + bonus2 + " بونص ";
+		//
+		//		
+		//var grade3 = studentData.grade3|| "لم تحضر";
+		//document.getElementById('grade3Placeholder').textContent = grade3;
+		//var bonus3 = studentData.bonus3 !== undefined ? studentData.bonus3 : 0;
+		//document.getElementById('bonus3Placeholder').textContent = "+" + bonus3 + " بونص ";
+//
+    //var grade4 = studentData.grade4|| "لم تحضر";
+		//document.getElementById('grade4Placeholder').textContent = grade4;
 	  </script>
 <script src="./assets/JS/Chart.min.js"></script>
 

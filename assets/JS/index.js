@@ -68,39 +68,38 @@ function get() {
   fetch(url)
   .then(response => response.json())
   .then(data => {
-      const rows = data.values;
-      const filteredRow = rows.find(row => row[3] === code);
+    const rows = data.values;
+    const filteredRow = rows.find(row => row[2] === code);
 
-      if (filteredRow) {
-          // Create an object to store the data
-          const dataToSend = {
-              name: filteredRow[1],
-              grade1: filteredRow[4],
-              bonus1: filteredRow[5],
-              grade2: filteredRow[6],
-              bonus2: filteredRow[7],
-              grade3: filteredRow[8],
-              bonus3: filteredRow[9],
-              grade4: filteredRow[10],
+    if (filteredRow) {
+      // Create an object to store the data
+      const dataToSend = {
+        name: filteredRow[1],
+        grade1: filteredRow[3],
+        bonus1: filteredRow[4],
+        followup1: filteredRow[5], // Adding followup1
+      };
 
-          };
+      // // If followup1 is not equal to 1, set grade1 to "لم تقدم ورقة فولو اب"
+      // if (dataToSend.followup1 !== '1') {
+      //   dataToSend.grade1 = 'لم تقدم ورقة فولو اب';
+      // }
 
-          // Store the student data in localStorage
-          localStorage.setItem('studentData', JSON.stringify(dataToSend));
+      // Store the student data in localStorage
+      localStorage.setItem('studentData', JSON.stringify(dataToSend));
 
-          // Redirect to singelPage.html
-          window.location.href = 'singelPage.html';
-      } else {
-          document.getElementById('data-table').innerHTML = 'Code not found!';
-      }
+      // Redirect to singelPage.html
+      window.location.href = 'singelPage.html';
+    } else {
+      document.getElementById('data-table').innerHTML = 'Code not found!';
+    }
   })
   .catch(error => {
     console.error('Error fetching data:', error);
     // Refresh the page on error
     const errorMessageElement = document.getElementById('error-message');
     errorMessageElement.innerHTML = 'حدث خطاء ما اماانك تكون غير مسجل فالفورم او انك تكتب الرقم القومي بشكل خاطئ';
-});
-
+  });
 }
 
 
