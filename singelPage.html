@@ -341,13 +341,9 @@
 
       var grade1 = studentData.grade1 || "لم تحضر";
  
-      var followup1 = studentData.followup1;
-      if (followup1 !== "1") {
-        grade1 = "لم تقدم ورقة فولو اب"; // Set the grade1 to "لم تقدم ورقة فولو اب"
-      } 
       
       // Check if grade1 is neither empty nor "none"
-      if (grade1 && grade1 !== "none" &&followup1!=="0") {
+      if (grade1 && grade1 !== "none") {
         document.getElementById('grade1Placeholder').textContent = grade1 + " / 50";
       } else {
         document.getElementById('grade1Placeholder').textContent = grade1; // Just display the fallback message
