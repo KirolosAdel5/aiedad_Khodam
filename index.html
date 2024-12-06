@@ -433,38 +433,29 @@ if (!useGoogleConsentMode){
         </a>
 
       </li>  
+
+      <li class="nav-links-li">
+        <a class="nav-category-link desktop text-md medium-weight nav-d-link" style="font-family:cairo"  href=""  data-tag="Coptic">
+          القبطي
+    
+        </a>
+
+      </li>  
+
+      <li class="nav-links-li">
+        <a class="nav-category-link desktop text-md medium-weight nav-d-link" style="font-family:cairo"  href=""  data-tag="Alaya">
+          الأية
+    
+        </a>
+
+      </li>  
     </li>        
     
  
       </ul>
       <div class="header-ctas-container desktop">
         <div class="header-search-container desktop">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
         </div>
         
@@ -523,17 +514,6 @@ if (!useGoogleConsentMode){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
       </div>
       
       
@@ -581,6 +561,12 @@ if (!useGoogleConsentMode){
         معلومة عالماشي
       </a>       
       
+      <a class="nav-category-link text-md medium-weight nav-d-link" style="font-family:cairo" href="" data-tag="Coptic">
+        القبطي
+      </a> 
+      <a class="nav-category-link text-md medium-weight nav-d-link" style="font-family:cairo" href="" data-tag="Alaya">
+        الأية
+      </a>     
       <div class="header-ctas-container mobile">
         
         
@@ -826,7 +812,35 @@ if (!useGoogleConsentMode){
         </div>
     
   </div>  
+<!-- القبطي -->
+  <div class="content" data-content="Coptic">
+    <div style="border-bottom: 1px solid #e5e5e5; height: 50px; margin-bottom: 15px; margin-top: 15px" >
 
+      <h1 style="font-family: cairo;">القبطي</h1>
+  
+    </div>
+
+        <!-- Dynamic Grid Container -->
+        <div id="grid-container-Coptic" class="grid-container-Coptic">
+          <!-- Blog post cards will be dynamically inserted here -->
+        </div>
+    
+  </div>  
+
+  <!-- اية للحفظ -->
+  <div class="content" data-content="Alaya">
+    <div style="border-bottom: 1px solid #e5e5e5; height: 50px; margin-bottom: 15px; margin-top: 15px" >
+
+      <h1 style="font-family: cairo;">اية للحفظ</h1>
+  
+    </div>
+
+        <!-- Dynamic Grid Container -->
+        <div id="grid-container-Alaya" class="grid-container-Alaya">
+          <!-- Blog post cards will be dynamically inserted here -->
+        </div>
+    
+  </div>  
 <!-- التربوي -->
   <div class="content" data-content="educational">
     <div style="border-bottom: 1px solid #e5e5e5; height: 50px; margin-bottom: 15px; margin-top: 15px" >
@@ -1404,6 +1418,9 @@ var hsVars = {
       'محاضرات روحية': document.getElementById('grid-container-Spirituality'),
       'التربوي': document.getElementById('grid-container-educational'),
       'معلومة علي الماشي': document.getElementById('grid-container-FastInfo'),
+      'القبطي': document.getElementById('grid-container-Coptic'),
+      'اية للحفظ': document.getElementById('grid-container-Alaya'),
+      
     };
 
     const typeCardCount = {
@@ -1413,12 +1430,15 @@ var hsVars = {
       'كتاب مقدس': 0,
       'محاضرات روحية': 0,
       'التربوي': 0,
-      'معلومة علي الماشي': 0
+      'معلومة علي الماشي': 0,
+      'القبطي': 0,
+      'اية للحفظ': 0
+
     };
 
     // Skip the header row (start from index 1)
     for (let i = 1; i < rows.length; i++) {
-      const [title, description, imageUrl, link, type, audio, attachment] = rows[i];
+      const [title, description, imageUrl, link, type, audio, attachment,date] = rows[i];
       
       const blogPostCard = `
       <div class="blog-post-card">
@@ -1439,7 +1459,11 @@ var hsVars = {
             </a>
             
             <h3 class="blog-card-title medium-weight" style="font-family: cairo;">${title}</h3>
+            <p class="blog-card-date" style="font-family: cairo; color: #A4ABB6; font-size: 14px;">
+              ${date}
+            </p>
           </div>
+          
           <div>
             <a class="read-now-link blog-card" href="${link}">
               <span class="read-now-link-text blog-card text-md medium-weight" style="font-family: cairo;">
