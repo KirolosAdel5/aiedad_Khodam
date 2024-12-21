@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تأجيل الامتحان الثاني</title>
+  <title>الامتحان الثاني</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap" rel="stylesheet">
@@ -13,73 +13,92 @@
       margin: 0;
       padding: 0;
       background-color: #f9f9f9;
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     .container {
-      margin-top: 50px;
+      width: 90%;
+      max-width: 400px; /* Limit width on larger screens */
+      height: 50%; /* 50% of the viewport height */
       padding: 20px;
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Center content vertically inside the box */
+      text-align: center; /* Center text horizontally */
     }
+
     .alert {
       color: red;
       font-size: 1.2rem;
+      margin-bottom: 20px;
     }
+
     .btn {
-      margin: 5px;
+      margin: 10px auto;
+      width: 70%;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2 class="text-center">تأجيل الامتحان الثاني</h2>
+    <h2>الامتحان الثاني</h2>
+    <p id="welcomeMessage" style="display: none; font-size: 1.4rem; color: rgb(36, 36, 36);"></p>
     <p id="alertMessage" class="alert"></p>
+
     <div id="question" style="display: none;">
       <p>هل تريد تأجيل الامتحان الثاني؟</p>
-      <button class="btn btn-success" id="yesButton">نعم</button>
-      <button class="btn btn-danger" id="noButton">لا</button>
+      <div class="options">
+        <label>
+          <label>
+            <input type="radio" name="deferExam" value="1"> لا
+          </label>
+          <input type="radio" name="deferExam" value="0"> نعم
+        </label>
+      </div>
+      <button class="btn btn-primary" id="submitButton">إرسال وعرض رقم الجلوس</button>
     </div>
   </div>
 
   <script>
-    // Correct SheetDB API URL (replace with your own API key and sheet name)
-    const apiUrl = 'https://sheetdb.io/api/v1/2honwazwcw03y?sheet=Exam2'; // Replace with your API key
-
-    // Your National ID
+    const apiUrl = 'https://sheetdb.io/api/v1/2honwazwcw03y?sheet=Exam2';
     const urlParams = new URLSearchParams(window.location.search);
-
-    // Extract the national_id parameter
     const nationalId = urlParams.get('national_id');
+    const welcomeMessage = document.getElementById("welcomeMessage");
 
     async function fetchData() {
       try {
         const response = await fetch(apiUrl);
-        const data = await response.json();
         
-        // Find the record matching the national ID
-        const record = data.find(row => row["national_id"] === nationalId); // Adjusted key name to match the dataset
+        const data = await response.json();
+        const record = data.find(row => row["national_id"] === nationalId);
 
         if (record) {
-          const exam1Finish = parseInt(record["exam_1_Finish"]); // Adjusted column name to match the dataset
-          const exam2 = parseInt(record["exam_2"]); // Adjusted column name to match the dataset
+          welcomeMessage.textContent = `مرحبا بك ${record['name']} 👋🏻`;
+          welcomeMessage.style.display = "block";
 
+          const exam1Finish = parseInt(record["exam_1_Finish"]);
+          
           if (exam1Finish === 0) {
             document.getElementById("alertMessage").textContent =
-              "يرجي العلم ان اخر محاولة مسموحة لك لاجتياز الامتحان الاول هي مع الامتحان الثاني";
+              "يرجى العلم أن آخر محاولة مسموحة لك لاجتياز الامتحان الأول هي مع الامتحان الثاني.";
           }
 
           document.getElementById("question").style.display = "block";
 
-          // Handle Yes Button
-          document.getElementById("yesButton").addEventListener("click", async () => {
-            await updateSheet(record["national_id"], 1); // Use national_id to update exam_2 to 1
-            alert("تم تأجيل الامتحان الثاني بنجاح.");
-          });
-
-          // Handle No Button
-          document.getElementById("noButton").addEventListener("click", async () => {
-            await updateSheet(record["national_id"], 0); // Use national_id to update exam_2 to 0
-            alert("لم يتم تأجيل الامتحان الثاني.");
+          document.getElementById("submitButton").addEventListener("click", async () => {
+            const selectedOption = document.querySelector('input[name="deferExam"]:checked');
+            if (!selectedOption) {
+              alert("يرجى اختيار نعم أو لا.");
+              return;
+            }
+            const value = parseInt(selectedOption.value);
+            await updateSheet(record["national_id"], value, record["code"]);
           });
         } else {
           alert("لم يتم العثور على بيانات لهذا الرقم القومي.");
@@ -90,29 +109,24 @@
       }
     }
 
-    // Update Sheet via PATCH method
-    async function updateSheet(nationalId, value) {
-      const updateData = {
-        "exam_2": value, // Update the exam_2 field with the new value
-      };
-
+    async function updateSheet(nationalId, value, code) {
+      const updateData = { "exam_2": value };
       try {
-        // Use PATCH method to update the record based on national_id
         const response = await fetch(`https://sheetdb.io/api/v1/2honwazwcw03y/national_id/${nationalId}?sheet=Exam2`, {
-          method: "PATCH", // Use PATCH method for partial updates
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(updateData), // Send the updated data in the request body
+          body: JSON.stringify(updateData),
         });
 
         if (!response.ok) {
           throw new Error("Error updating sheet");
         }
 
-        const result = await response.json();
-        console.log("Update successful:", result);
-        alert("تم تأجيل الامتحان الثاني بنجاح.");
+        alert(value === 0
+          ? `تم تأجيل الامتحان الثاني بنجاح. يمكنك اجراء الامتحان مع الامتحان القادم ` 
+          : `رقم الجلوس الخاص بك هو: ${code}`);
       } catch (error) {
         console.error(error);
         alert("حدث خطأ أثناء تحديث البيانات.");
