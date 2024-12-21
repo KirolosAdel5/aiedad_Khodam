@@ -30,7 +30,7 @@ async function checkNationalId() {
         found = true;
         const score = parseInt(rows[i][3]); // الدرجة في العمود الثاني
         if (score >= 70) {
-          window.location.href = "form2.html"; // الانتقال للفورم الثاني
+          window.location.href = `form2.html?national_id=${nationalId}`; // الانتقال للفورم الثاني مع رقم الهوية
         } else {
           alert("🥲عذرًا، غير مسموح لك بدخول الامتحان. لتخطي نسبة الغياب!!");
         }
