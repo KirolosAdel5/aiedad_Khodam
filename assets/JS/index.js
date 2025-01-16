@@ -66,7 +66,7 @@ function get() {
   const apiKey = 'AIzaSyBReJ_2F6krOAcrZIdD5QJ4eDHN24EBYpY'; // Replace with your Google Sheets API key
   const spreadsheetId = '1YN4Pt8N5G4sDTohLvs2VVyQRoiynDWR1TfZaKJGdlXU'; // New Google Sheets spreadsheet ID
   // Replace with your Google Sheets spreadsheet ID
-  const range = `Exams!A2:G`; // Adjust the range to include all data rows from your sheet
+  const range = `Exams!A2:I`; // Adjust the range to include all data rows from your sheet
 
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
@@ -84,6 +84,10 @@ function get() {
         grade1: filteredRow[3],
         bonus1: filteredRow[4],
         followup1: filteredRow[5], // Adding followup1
+        grade2: filteredRow[6],
+        bonus2: filteredRow[7],
+        followup2: filteredRow[8], 
+
       };
 
       // // If followup1 is not equal to 1, set grade1 to "لم تقدم ورقة فولو اب"

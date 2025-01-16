@@ -114,13 +114,13 @@
 
     </div>
     
-<!-- 
     <div class="single_sales">
       <span>الامتحان الثاني</span>
-      <h3 id="grade2Placeholder"></h3> /50
+      <h3 id="grade2Placeholder"></h3>
       <h5 id="bonus2Placeholder" style="color:green;"></h5>
     
     </div>	
+<!-- 
 
     <div class="single_sales">
       <span>الامتحان الثالث</span>
@@ -348,7 +348,8 @@
       } else {
         document.getElementById('grade1Placeholder').textContent = grade1; // Just display the fallback message
       }
-  
+
+    
   
       var bonus1 = studentData.bonus1;
       if (bonus1) {
@@ -356,7 +357,31 @@
       } else {
         document.getElementById('bonus1Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
       }
-    }		//var grade2 = studentData.grade2|| "لم تحضر";
+
+
+    var grade2 = studentData.grade1 || "لم تحضر";
+ 
+    // Check if grade1 is neither empty nor "none"
+    if (grade2 && grade2 !== "none") {
+      document.getElementById('grade2Placeholder').textContent = grade2 + " / 50";
+    } else {
+      document.getElementById('grade2Placeholder').textContent = grade2; // Just display the fallback message
+    }
+
+  
+
+    var bonus2 = studentData.bonus2;
+    if (bonus2) {
+      document.getElementById('bonus2Placeholder').textContent = "+" + bonus2 + " بونص ";
+    } else {
+      document.getElementById('bonus2Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
+    }
+
+
+    }		
+    
+  
+    //var grade2 = studentData.grade2|| "لم تحضر";
 		//document.getElementById('grade2Placeholder').textContent = grade2;
 		//var bonus2 = studentData.bonus2 !== undefined ? studentData.bonus2 : 0;
 		//document.getElementById('bonus2Placeholder').textContent = "+" + bonus2 + " بونص ";
