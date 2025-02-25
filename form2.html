@@ -73,27 +73,41 @@
   </div>
 
   <script>
-    const apiUrl = 'https://sheetdb.io/api/v1/31gznj8wmvijh?sheet=Exam2';
     const urlParams = new URLSearchParams(window.location.search);
     const nationalId = urlParams.get('national_id');
     const welcomeMessage = document.getElementById("welcomeMessage");
-
+    // إعداد Google Sheets API
+    const API_KEY = 'AIzaSyBReJ_2F6krOAcrZIdD5QJ4eDHN24EBYpY'; // Replace with your Google Sheets API key
+    const SPREADSHEET_ID = '1YN4Pt8N5G4sDTohLvs2VVyQRoiynDWR1TfZaKJGdlXU'; // New Google Sheets spreadsheet ID
+    // Replace with your Google Sheets spreadsheet ID
+    const SHEET_NAME = 'Exam3'; // Sheet tab name
+    const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_NAME}!A:D?key=${API_KEY}`;
+    
     async function fetchData() {
       try {
         const response = await fetch(apiUrl);
-        
         const data = await response.json();
-        const record = data.find(row => row["national_id"] === nationalId);
+
+        // Assuming columns: A (national_id), B (name), C (exam_2_Finish), D (code)
+        const rows = data.values;
+        const headers = rows[0]; // First row as headers
+        const records = rows.slice(1).map(row => ({
+          national_id: row[2],
+          name: row[1],
+          exam_2_Finish: row[4],
+          code: row[0]
+        }));
+
+        const record = records.find(row => row.national_id === nationalId);
 
         if (record) {
-          welcomeMessage.textContent = `مرحبا بك ${record['name']} 👋🏻`;
+          welcomeMessage.textContent = `مرحبا بك ${record.name} 👋🏻`;
           welcomeMessage.style.display = "block";
 
-          const exam1Finish = parseInt(record["exam_2_Finish"]);
-          
+          const exam1Finish = parseInt(record.exam_2_Finish);
           if (exam1Finish === 0) {
             document.getElementById("alertMessage").textContent =
-              "يرجى العلم أن آخر محاولة مسموحة لك لاجتياز الامتحان الأول هي مع الامتحان الثالث.";
+              "يرجى العلم أن آخر محاولة مسموحة لك لاجتياز الامتحان الأول هي مع الامتحان الثاني.";
           }
 
           document.getElementById("question").style.display = "block";
@@ -105,7 +119,7 @@
               return;
             }
             const value = parseInt(selectedOption.value);
-            await updateSheet(record["national_id"], value, record["code"]);
+            await updateSheet(record.national_id, value, record.code);
           });
         } else {
           alert("لم يتم العثور على بيانات لهذا الرقم القومي.");
