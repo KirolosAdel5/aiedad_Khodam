@@ -81,7 +81,7 @@
     const SPREADSHEET_ID = '1YN4Pt8N5G4sDTohLvs2VVyQRoiynDWR1TfZaKJGdlXU'; // New Google Sheets spreadsheet ID
     // Replace with your Google Sheets spreadsheet ID
     const SHEET_NAME = 'Exam3'; // Sheet tab name
-    const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_NAME}!A:D?key=${API_KEY}`;
+    const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_NAME}!A1:G?key=${API_KEY}`;
     
     async function fetchData() {
       try {
@@ -107,7 +107,7 @@
           const exam1Finish = parseInt(record.exam_2_Finish);
           if (exam1Finish === 0) {
             document.getElementById("alertMessage").textContent =
-              "يرجى العلم أن آخر محاولة مسموحة لك لاجتياز الامتحان الأول هي مع الامتحان الثاني.";
+              "يرجى العلم أن آخر محاولة مسموحة لك لاجتياز الامتحان الثاني هي مع الامتحان الثالث.";
           }
 
           document.getElementById("question").style.display = "block";
