@@ -29,7 +29,7 @@ async function checkNationalId() {
       if (rows[i][2] === nationalId) { // الرقم القومي في العمود الأول
         found = true;
         const score = parseInt(rows[i][3]); // الدرجة في العمود الثاني
-        if (score >= 5) {
+        if (score >= 3) {
           window.location.href = `form2.html?national_id=${nationalId}`; // الانتقال للفورم الثاني مع رقم الهوية
         } else {
           messageField.textContent ="عذرًا، غير مسموح لك بدخول الامتحان. لتخطي نسبة الغياب!!🥲"
