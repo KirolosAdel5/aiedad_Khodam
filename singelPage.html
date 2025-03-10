@@ -120,14 +120,14 @@
       <h5 id="bonus2Placeholder" style="color:green;"></h5>
     
     </div>	
-<!-- 
 
     <div class="single_sales">
       <span>الامتحان الثالث</span>
-      <h3 id="grade3Placeholder"></h3> /50
+      <h3 id="grade3Placeholder"></h3>
       <h5 id="bonus3Placeholder" style="color:green;"></h5>
     
     </div>	
+<!-- 
 
     <div class="single_sales">
       <span>الامتحان الرابع</span>
@@ -377,6 +377,24 @@
       document.getElementById('bonus2Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
     }
 
+
+    var grade3 = studentData.grade3 || "لم تحضر";
+ 
+    // Check if grade1 is neither empty nor "none"
+    if (grade3 && grade3 !== "none") {
+      document.getElementById('grade3Placeholder').textContent = (grade3*2) + " %";
+    } else {
+      document.getElementById('grade3Placeholder').textContent = grade3; // Just display the fallback message
+    }
+
+  
+
+    var bonus3 = studentData.bonus3;
+    if (bonus3) {
+      document.getElementById('bonus3Placeholder').textContent = "+" + bonus3 + " بونص ";
+    } else {
+      document.getElementById('bonus3Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
+    }
 
     }		
     
