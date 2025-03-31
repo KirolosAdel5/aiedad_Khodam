@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الامتحان الثالث</title>
+  <title>الامتحان الرابع</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap" rel="stylesheet">
@@ -52,13 +52,13 @@
     <div  style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
       <div style="width: 60px; height: 60px; background-color: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 22q-1.45 0-2.475-1.025T4 18.5v-13q0-1.45 1.025-2.475T7.5 2H18q.825 0 1.413.587T20 4v12.525q0 .2-.162.363t-.588.362q-.35.175-.55.5t-.2.75t.2.763t.55.487t.55.413t.2.562v.25q0 .425-.288.725T19 22zM9 15q.425 0 .713-.288T10 14V5q0-.425-.288-.712T9 4t-.712.288T8 5v9q0 .425.288.713T9 15m-1.5 5h9.325q-.15-.35-.237-.712T16.5 18.5q0-.4.075-.775t.25-.725H7.5q-.65 0-1.075.438T6 18.5q0 .65.425 1.075T7.5 20"/></svg>      </div>
-      <h2>الامتحان الثالث</h2>
+      <h2>الامتحان الرابع</h2>
     <p id="welcomeMessage" style="display: none; font-size: 1.4rem; color: rgb(36, 36, 36);"></p>
     <p id="alertMessage" class="alert"></p>
 
     <div id="question" style="display: none;">
       
-      <p>هل تريد تأجيل الامتحان الثالث؟</p>
+      <p>هل تريد تأجيل الامتحان الرابع؟</p>
       <div class="options" style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 20px;" >
         
         <label>
@@ -80,7 +80,7 @@
     const API_KEY = 'AIzaSyBReJ_2F6krOAcrZIdD5QJ4eDHN24EBYpY'; // Replace with your Google Sheets API key
     const SPREADSHEET_ID = '1YN4Pt8N5G4sDTohLvs2VVyQRoiynDWR1TfZaKJGdlXU'; // New Google Sheets spreadsheet ID
     // Replace with your Google Sheets spreadsheet ID
-    const SHEET_NAME = 'Exam3'; // Sheet tab name
+    const SHEET_NAME = 'Exam4'; // Sheet tab name
     const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_NAME}!A1:G?key=${API_KEY}`;
     
     async function fetchData() {
@@ -107,7 +107,7 @@
           const exam1Finish = parseInt(record.exam_2_Finish);
           if (exam1Finish === 0) {
             document.getElementById("alertMessage").textContent =
-              "يرجى العلم أن آخر محاولة مسموحة لك لاجتياز الامتحان الثاني هي مع الامتحان الثالث.";
+              "يرجى العلم أن آخر محاولة مسموحة لك لاجتياز الامتحان الثالث هي الجمعة القادمة.";
           }
 
           document.getElementById("question").style.display = "block";
@@ -131,9 +131,9 @@
     }
 
     async function updateSheet(nationalId, value, code) {
-      const updateData = { "exam_3": value };
+      const updateData = { "exam_4": value };
       try {
-        const response = await fetch(`https://sheetdb.io/api/v1/31gznj8wmvijh/national_id/${nationalId}?sheet=Exam3`, {
+        const response = await fetch(`https://sheetdb.io/api/v1/31gznj8wmvijh/national_id/${nationalId}?sheet=Exam4`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -146,7 +146,7 @@
         }
 
         alert(value === 0
-          ? `تم تأجيل الامتحان الثالث بنجاح. يمكنك اجراء الامتحان مع الامتحان القادم ` 
+          ? `تم تأجيل الامتحان الرابع بنجاح. يمكنك اجراء الامتحان مع الامتحان القادم ` 
           : `رقم الجلوس الخاص بك هو: ${code}`);
       } catch (error) {
         console.error(error);

@@ -8,7 +8,7 @@ const checkButton = document.getElementById("checkButton");
 const apiKey = 'AIzaSyBReJ_2F6krOAcrZIdD5QJ4eDHN24EBYpY'; // Replace with your Google Sheets API key
 const spreadsheetId = '1YN4Pt8N5G4sDTohLvs2VVyQRoiynDWR1TfZaKJGdlXU'; // New Google Sheets spreadsheet ID
 // Replace with your Google Sheets spreadsheet ID
-const range = `Exam3!A1:G`; // Adjust the range to include all data rows from your sheet
+const range = `Exam4!A1:G`; // Adjust the range to include all data rows from your sheet
 
 const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
