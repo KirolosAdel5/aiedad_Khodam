@@ -127,6 +127,13 @@
       <h5 id="bonus3Placeholder" style="color:green;"></h5>
     
     </div>	
+
+    <div class="single_sales">
+      <span>الامتحان الرابع</span>
+      <h3 id="grade4Placeholder"></h3>
+      <h5 id="bonus4Placeholder" style="color:green;"></h5>
+    
+    </div>	
 <!-- 
 
     <div class="single_sales">
@@ -396,9 +403,27 @@
       document.getElementById('bonus3Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
     }
 
-    }		
+		
     
+    var grade4 = studentData.grade4 || "لم تحضر";
+ 
+    // Check if grade1 is neither empty nor "none"
+    if (grade4 && grade4 !== "none") {
+      document.getElementById('grade4Placeholder').textContent = (grade4*2) + " %";
+    } else {
+      document.getElementById('grade4Placeholder').textContent = grade4; // Just display the fallback message
+    }
+
   
+
+    var bonus4 = studentData.bonus4;
+    if (bonus4) {
+      document.getElementById('bonus4Placeholder').textContent = "+" + bonus4 + " بونص ";
+    } else {
+      document.getElementById('bonus4Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
+    }
+
+    }		  
     //var grade2 = studentData.grade2|| "لم تحضر";
 		//document.getElementById('grade2Placeholder').textContent = grade2;
 		//var bonus2 = studentData.bonus2 !== undefined ? studentData.bonus2 : 0;

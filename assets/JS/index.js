@@ -37,13 +37,15 @@ function save() {
   var grade1 = document.getElementById('grade1').value
   var grade2 = document.getElementById('grade2').value
   var grade3 = document.getElementById('grade3').value
+  var grade4 = document.getElementById('grade4').value
 
   database.ref('users/' + id).set({
     name : name,
     id : id,
     grade1 : grade1,
     grade2 : grade2,
-    grade3 : grade3
+    grade3 : grade3,
+    grade4 : grade4
   })
 
   alert('Saved')
@@ -66,7 +68,7 @@ function get() {
   const apiKey = 'AIzaSyBReJ_2F6krOAcrZIdD5QJ4eDHN24EBYpY'; // Replace with your Google Sheets API key
   const spreadsheetId = '1YN4Pt8N5G4sDTohLvs2VVyQRoiynDWR1TfZaKJGdlXU'; // New Google Sheets spreadsheet ID
   // Replace with your Google Sheets spreadsheet ID
-  const range = `Exams!A2:L`; // Adjust the range to include all data rows from your sheet
+  const range = `Exams!A2:N`; // Adjust the range to include all data rows from your sheet
 
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
@@ -89,6 +91,8 @@ function get() {
         followup2: filteredRow[8], 
         grade3: filteredRow[9],
         bonus3: filteredRow[10],
+        grade4: filteredRow[12],
+        bonus4: filteredRow[13],
       };
 
       // // If followup1 is not equal to 1, set grade1 to "لم تقدم ورقة فولو اب"
