@@ -8,7 +8,7 @@ const checkButton = document.getElementById("checkButton");
 const apiKey = 'AIzaSyBReJ_2F6krOAcrZIdD5QJ4eDHN24EBYpY'; // Replace with your Google Sheets API key
 const spreadsheetId = '1YN4Pt8N5G4sDTohLvs2VVyQRoiynDWR1TfZaKJGdlXU'; // New Google Sheets spreadsheet ID
 // Replace with your Google Sheets spreadsheet ID
-const range = `Exam4!A1:G`; // Adjust the range to include all data rows from your sheet
+const range = `Exam5!A1:G`; // Adjust the range to include all data rows from your sheet
 
 const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
@@ -29,7 +29,7 @@ async function checkNationalId() {
       if (rows[i][2] === nationalId) { // الرقم القومي في العمود الأول
         found = true;
         const score = parseInt(rows[i][3]); // الدرجة في العمود الثاني
-        if (score >= 3) {
+        if (score >= 2) {
           window.location.href = `form2.html?national_id=${nationalId}`; // الانتقال للفورم الثاني مع رقم الهوية
         } else {
           messageField.textContent ="عذرًا، غير مسموح لك بدخول الامتحان. لتخطي نسبة الغياب!!🥲"
