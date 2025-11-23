@@ -85,17 +85,6 @@ function get() {
         name: filteredRow[1],
         grade1: filteredRow[3],
         bonus1: filteredRow[4],
-        followup1: filteredRow[5], // Adding followup1
-        grade2: filteredRow[6],
-        bonus2: filteredRow[7],
-        followup2: filteredRow[8], 
-        grade3: filteredRow[9],
-        bonus3: filteredRow[10],
-        grade4: filteredRow[12],
-        bonus4: filteredRow[13],
-        grade5: filteredRow[15],
-        bonus5: filteredRow[16],
-
       };
 
       // // If followup1 is not equal to 1, set grade1 to "لم تقدم ورقة فولو اب"

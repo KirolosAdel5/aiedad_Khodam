@@ -113,33 +113,6 @@
       <h5 id="bonus1Placeholder" style="color:green;"></h5>
 
     </div>
-    
-    <div class="single_sales">
-      <span>الامتحان الثاني</span>
-      <h3 id="grade2Placeholder"></h3>
-      <h5 id="bonus2Placeholder" style="color:green;"></h5>
-    
-    </div>	
-
-    <div class="single_sales">
-      <span>الامتحان الثالث</span>
-      <h3 id="grade3Placeholder"></h3>
-      <h5 id="bonus3Placeholder" style="color:green;"></h5>
-    
-    </div>	
-
-    <div class="single_sales">
-      <span>الامتحان الرابع</span>
-      <h3 id="grade4Placeholder"></h3>
-      <h5 id="bonus4Placeholder" style="color:green;"></h5>
-    
-    </div>
-	
-	<div class="single_sales">
-      <span>الامتحان الخامس</span>
-      <h3 id="grade5Placeholder"></h3>
-      <h5 id="bonus5Placeholder" style="color:green;"></h5>
-    </div>	
 <!-- 
 
     <div class="single_sales">
@@ -370,83 +343,6 @@
       } else {
         document.getElementById('bonus1Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
       }
-
-
-    var grade2 = studentData.grade2 || "لم تحضر";
- 
-    // Check if grade1 is neither empty nor "none"
-    if (grade2 && grade2 !== "none") {
-      document.getElementById('grade2Placeholder').textContent = grade2 + " / 50";
-    } else {
-      document.getElementById('grade2Placeholder').textContent = grade2; // Just display the fallback message
-    }
-
-  
-
-    var bonus2 = studentData.bonus2;
-    if (bonus2) {
-      document.getElementById('bonus2Placeholder').textContent = "+" + bonus2 + " بونص ";
-    } else {
-      document.getElementById('bonus2Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
-    }
-
-
-    var grade3 = studentData.grade3 || "لم تحضر";
- 
-    // Check if grade1 is neither empty nor "none"
-    if (grade3 && grade3 !== "none") {
-      document.getElementById('grade3Placeholder').textContent = (grade3*2) + " %";
-    } else {
-      document.getElementById('grade3Placeholder').textContent = grade3; // Just display the fallback message
-    }
-
-  
-
-    var bonus3 = studentData.bonus3;
-    if (bonus3) {
-      document.getElementById('bonus3Placeholder').textContent = "+" + bonus3 + " بونص ";
-    } else {
-      document.getElementById('bonus3Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
-    }
-
-		
-    
-    var grade4 = studentData.grade4 || "لم تحضر";
- 
-    // Check if grade1 is neither empty nor "none"
-    if (grade4 && grade4 !== "none" ) {
-      document.getElementById('grade4Placeholder').textContent = (grade4*2) + " %";
-    } else {
-      document.getElementById('grade4Placeholder').textContent = grade4; // Just display the fallback message
-    }
-
-  
-
-    var bonus4 = studentData.bonus4;
-    if (bonus4) {
-      document.getElementById('bonus4Placeholder').textContent = "+" + bonus4 + " بونص ";
-    } else {
-      document.getElementById('bonus4Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
-    }
-
-
-	var grade5 = studentData.grade5 || "لم تحضر";
- 
-    // Check if grade1 is neither empty nor "none"
-    if (grade5 && grade5 !== "none") {
-      document.getElementById('grade5Placeholder').textContent = (grade5) + " / 50";
-    } else {
-      document.getElementById('grade5Placeholder').textContent = grade5; // Just display the fallback message
-    }
-
-  
-
-    var bonus5 = studentData.bonus5;
-    if (bonus5) {
-      document.getElementById('bonus5Placeholder').textContent = "+" + bonus5 + " بونص ";
-    } else {
-      document.getElementById('bonus5Placeholder').style.display = 'none'; // Hide bonus1 if it's empty
-    }
 
     }		  
     //var grade2 = studentData.grade2|| "لم تحضر";
